@@ -12,7 +12,6 @@ class CreateSkillsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->boolean('active')->default(0)->nullable();
-            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });
