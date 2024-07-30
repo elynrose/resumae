@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
                 'password'           => bcrypt('password'),
                 'remember_token'     => null,
                 'verified'           => 1,
-                'verified_at'        => '2024-07-29 16:40:34',
+                'verified_at'        => '2024-07-29 18:35:29',
                 'verification_token' => '',
                 'two_factor_code'    => '',
             ],

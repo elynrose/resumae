@@ -33,9 +33,6 @@
                             {{ trans('cruds.skill.fields.active') }}
                         </th>
                         <th>
-                            {{ trans('cruds.skill.fields.name') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -52,9 +49,6 @@
                             <td>
                                 <span style="display:none">{{ $skill->active ?? '' }}</span>
                                 <input type="checkbox" disabled="disabled" {{ $skill->active ? 'checked' : '' }}>
-                            </td>
-                            <td>
-                                {{ $skill->name ?? '' }}
                             </td>
                             <td>
                                 @can('skill_show')

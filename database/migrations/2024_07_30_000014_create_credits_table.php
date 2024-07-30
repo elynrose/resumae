@@ -4,15 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAlertsTable extends Migration
+class CreateCreditsTable extends Migration
 {
     public function up()
     {
-        Schema::create('user_alerts', function (Blueprint $table) {
+        Schema::create('credits', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('alert_text');
-            $table->string('alert_link')->nullable();
+            $table->integer('points');
+            $table->string('email')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 }

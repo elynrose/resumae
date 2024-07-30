@@ -21,10 +21,6 @@ class StoreSkillRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'name' => [
-                'string',
-                'required',
-            ],
         ];
     }
 }

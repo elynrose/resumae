@@ -17,6 +17,10 @@ class UpdateMySkillRequest extends FormRequest
     public function rules()
     {
         return [
+            'company' => [
+                'string',
+                'required',
+            ],
             'job_title' => [
                 'string',
                 'required',
@@ -25,6 +29,14 @@ class UpdateMySkillRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'start_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'end_date' => [
+                'string',
+                'nullable',
+            ],
             'skills.*' => [
                 'integer',
             ],
@@ -32,9 +44,9 @@ class UpdateMySkillRequest extends FormRequest
                 'required',
                 'array',
             ],
-            'comments' => [
-                'string',
-                'nullable',
+            'my_resume_id' => [
+                'required',
+                'integer',
             ],
             'user_id' => [
                 'required',

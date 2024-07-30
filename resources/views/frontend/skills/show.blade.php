@@ -42,14 +42,6 @@
                                         <input type="checkbox" disabled="disabled" {{ $skill->active ? 'checked' : '' }}>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.skill.fields.name') }}
-                                    </th>
-                                    <td>
-                                        {{ $skill->name }}
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">

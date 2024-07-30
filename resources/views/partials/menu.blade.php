@@ -97,6 +97,26 @@
                 </a>
             </li>
         @endcan
+        @can('job_posting_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.job-postings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/job-postings") || request()->is("admin/job-postings/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-briefcase c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.jobPosting.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('job_skill_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.job-skills.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/job-skills") || request()->is("admin/job-skills/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fab fa-bandcamp c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.jobSkill.title') }}
+                </a>
+            </li>
+        @endcan
         @can('request_resume_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.request-resumes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/request-resumes") || request()->is("admin/request-resumes/*") ? "c-active" : "" }}">
@@ -114,6 +134,26 @@
 
                     </i>
                     {{ trans('cruds.userAlert.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('payment_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.payments.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/payments") || request()->is("admin/payments/*") ? "c-active" : "" }}">
+                    <i class="fa-fw far fa-credit-card c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.payment.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('credit_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.credits.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/credits") || request()->is("admin/credits/*") ? "c-active" : "" }}">
+                    <i class="fa-fw far fa-star c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.credit.title') }}
                 </a>
             </li>
         @endcan

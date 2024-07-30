@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.mySkill.fields.company') }}
+                        </th>
+                        <td>
+                            {{ $mySkill->company }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.mySkill.fields.job_title') }}
                         </th>
                         <td>
@@ -37,6 +45,30 @@
                         </th>
                         <td>
                             {{ $mySkill->job_category->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.start_date') }}
+                        </th>
+                        <td>
+                            {{ $mySkill->start_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.end_date') }}
+                        </th>
+                        <td>
+                            {{ $mySkill->end_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.to_present') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $mySkill->to_present ? 'checked' : '' }}>
                         </td>
                     </tr>
                     <tr>
@@ -54,7 +86,15 @@
                             {{ trans('cruds.mySkill.fields.comments') }}
                         </th>
                         <td>
-                            {{ $mySkill->comments }}
+                            {!! $mySkill->comments !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.my_resume') }}
+                        </th>
+                        <td>
+                            {{ $mySkill->my_resume->resume ?? '' }}
                         </td>
                     </tr>
                     <tr>

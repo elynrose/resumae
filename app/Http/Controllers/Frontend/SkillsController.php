@@ -57,8 +57,6 @@ class SkillsController extends Controller
     {
         abort_if(Gate::denies('skill_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $skill->load('skillsResumes', 'skillsMySkills');
-
         return view('frontend.skills.show', compact('skill'));
     }
 

@@ -107,11 +107,6 @@
                                             {{ trans('cruds.skill.title') }}
                                         </a>
                                     @endcan
-                                    @can('request_resume_access')
-                                        <a class="dropdown-item" href="{{ route('frontend.request-resumes.index') }}">
-                                            {{ trans('cruds.requestResume.title') }}
-                                        </a>
-                                    @endcan
                                     @can('my_resume_access')
                                         <a class="dropdown-item" href="{{ route('frontend.my-resumes.index') }}">
                                             {{ trans('cruds.myResume.title') }}
@@ -122,9 +117,34 @@
                                             {{ trans('cruds.mySkill.title') }}
                                         </a>
                                     @endcan
+                                    @can('job_posting_access')
+                                        <a class="dropdown-item" href="{{ route('frontend.job-postings.index') }}">
+                                            {{ trans('cruds.jobPosting.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('job_skill_access')
+                                        <a class="dropdown-item" href="{{ route('frontend.job-skills.index') }}">
+                                            {{ trans('cruds.jobSkill.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('request_resume_access')
+                                        <a class="dropdown-item" href="{{ route('frontend.request-resumes.index') }}">
+                                            {{ trans('cruds.requestResume.title') }}
+                                        </a>
+                                    @endcan
                                     @can('user_alert_access')
                                         <a class="dropdown-item" href="{{ route('frontend.user-alerts.index') }}">
                                             {{ trans('cruds.userAlert.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('payment_access')
+                                        <a class="dropdown-item" href="{{ route('frontend.payments.index') }}">
+                                            {{ trans('cruds.payment.title') }}
+                                        </a>
+                                    @endcan
+                                    @can('credit_access')
+                                        <a class="dropdown-item" href="{{ route('frontend.credits.index') }}">
+                                            {{ trans('cruds.credit.title') }}
                                         </a>
                                     @endcan
 

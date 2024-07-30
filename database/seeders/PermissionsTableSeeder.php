@@ -76,122 +76,202 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 17,
-                'title' => 'job_category_create',
-            ],
-            [
-                'id'    => 18,
-                'title' => 'job_category_edit',
-            ],
-            [
-                'id'    => 19,
-                'title' => 'job_category_show',
-            ],
-            [
-                'id'    => 20,
-                'title' => 'job_category_delete',
-            ],
-            [
-                'id'    => 21,
-                'title' => 'job_category_access',
-            ],
-            [
-                'id'    => 22,
-                'title' => 'skill_create',
-            ],
-            [
-                'id'    => 23,
-                'title' => 'skill_edit',
-            ],
-            [
-                'id'    => 24,
-                'title' => 'skill_show',
-            ],
-            [
-                'id'    => 25,
-                'title' => 'skill_delete',
-            ],
-            [
-                'id'    => 26,
-                'title' => 'skill_access',
-            ],
-            [
-                'id'    => 27,
-                'title' => 'request_resume_create',
-            ],
-            [
-                'id'    => 28,
-                'title' => 'request_resume_edit',
-            ],
-            [
-                'id'    => 29,
-                'title' => 'request_resume_show',
-            ],
-            [
-                'id'    => 30,
-                'title' => 'request_resume_delete',
-            ],
-            [
-                'id'    => 31,
-                'title' => 'request_resume_access',
-            ],
-            [
-                'id'    => 32,
-                'title' => 'my_resume_create',
-            ],
-            [
-                'id'    => 33,
-                'title' => 'my_resume_edit',
-            ],
-            [
-                'id'    => 34,
-                'title' => 'my_resume_show',
-            ],
-            [
-                'id'    => 35,
-                'title' => 'my_resume_delete',
-            ],
-            [
-                'id'    => 36,
-                'title' => 'my_resume_access',
-            ],
-            [
-                'id'    => 37,
-                'title' => 'my_skill_create',
-            ],
-            [
-                'id'    => 38,
-                'title' => 'my_skill_edit',
-            ],
-            [
-                'id'    => 39,
-                'title' => 'my_skill_show',
-            ],
-            [
-                'id'    => 40,
-                'title' => 'my_skill_delete',
-            ],
-            [
-                'id'    => 41,
-                'title' => 'my_skill_access',
-            ],
-            [
-                'id'    => 42,
                 'title' => 'user_alert_create',
             ],
             [
-                'id'    => 43,
+                'id'    => 18,
                 'title' => 'user_alert_show',
             ],
             [
-                'id'    => 44,
+                'id'    => 19,
                 'title' => 'user_alert_delete',
             ],
             [
-                'id'    => 45,
+                'id'    => 20,
                 'title' => 'user_alert_access',
             ],
             [
+                'id'    => 21,
+                'title' => 'job_category_create',
+            ],
+            [
+                'id'    => 22,
+                'title' => 'job_category_edit',
+            ],
+            [
+                'id'    => 23,
+                'title' => 'job_category_show',
+            ],
+            [
+                'id'    => 24,
+                'title' => 'job_category_delete',
+            ],
+            [
+                'id'    => 25,
+                'title' => 'job_category_access',
+            ],
+            [
+                'id'    => 26,
+                'title' => 'skill_create',
+            ],
+            [
+                'id'    => 27,
+                'title' => 'skill_edit',
+            ],
+            [
+                'id'    => 28,
+                'title' => 'skill_show',
+            ],
+            [
+                'id'    => 29,
+                'title' => 'skill_delete',
+            ],
+            [
+                'id'    => 30,
+                'title' => 'skill_access',
+            ],
+            [
+                'id'    => 31,
+                'title' => 'my_resume_create',
+            ],
+            [
+                'id'    => 32,
+                'title' => 'my_resume_edit',
+            ],
+            [
+                'id'    => 33,
+                'title' => 'my_resume_show',
+            ],
+            [
+                'id'    => 34,
+                'title' => 'my_resume_delete',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'my_resume_access',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'request_resume_create',
+            ],
+            [
+                'id'    => 37,
+                'title' => 'request_resume_edit',
+            ],
+            [
+                'id'    => 38,
+                'title' => 'request_resume_show',
+            ],
+            [
+                'id'    => 39,
+                'title' => 'request_resume_delete',
+            ],
+            [
+                'id'    => 40,
+                'title' => 'request_resume_access',
+            ],
+            [
+                'id'    => 41,
+                'title' => 'my_skill_create',
+            ],
+            [
+                'id'    => 42,
+                'title' => 'my_skill_edit',
+            ],
+            [
+                'id'    => 43,
+                'title' => 'my_skill_show',
+            ],
+            [
+                'id'    => 44,
+                'title' => 'my_skill_delete',
+            ],
+            [
+                'id'    => 45,
+                'title' => 'my_skill_access',
+            ],
+            [
                 'id'    => 46,
+                'title' => 'job_posting_create',
+            ],
+            [
+                'id'    => 47,
+                'title' => 'job_posting_edit',
+            ],
+            [
+                'id'    => 48,
+                'title' => 'job_posting_show',
+            ],
+            [
+                'id'    => 49,
+                'title' => 'job_posting_delete',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'job_posting_access',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'job_skill_create',
+            ],
+            [
+                'id'    => 52,
+                'title' => 'job_skill_edit',
+            ],
+            [
+                'id'    => 53,
+                'title' => 'job_skill_show',
+            ],
+            [
+                'id'    => 54,
+                'title' => 'job_skill_delete',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'job_skill_access',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'payment_create',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'payment_edit',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'payment_show',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'payment_delete',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'payment_access',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'credit_create',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'credit_edit',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'credit_show',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'credit_delete',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'credit_access',
+            ],
+            [
+                'id'    => 66,
                 'title' => 'profile_password_edit',
             ],
         ];
