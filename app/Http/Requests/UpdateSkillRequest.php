@@ -21,10 +21,6 @@ class UpdateSkillRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'name' => [
-                'string',
-                'required',
-            ],
         ];
     }
 }

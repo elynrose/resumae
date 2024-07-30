@@ -18,6 +18,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
+    // User Alerts
+    Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
+    Route::get('user-alerts/read', 'UserAlertsController@read');
+    Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+
     // Job Categories
     Route::delete('job-categories/destroy', 'JobCategoriesController@massDestroy')->name('job-categories.massDestroy');
     Route::post('job-categories/parse-csv-import', 'JobCategoriesController@parseCsvImport')->name('job-categories.parseCsvImport');
@@ -30,24 +35,39 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('skills/process-csv-import', 'SkillsController@processCsvImport')->name('skills.processCsvImport');
     Route::resource('skills', 'SkillsController');
 
-    // Request Resume
-    Route::delete('request-resumes/destroy', 'RequestResumeController@massDestroy')->name('request-resumes.massDestroy');
-    Route::resource('request-resumes', 'RequestResumeController');
-
     // My Resume
     Route::delete('my-resumes/destroy', 'MyResumeController@massDestroy')->name('my-resumes.massDestroy');
     Route::post('my-resumes/media', 'MyResumeController@storeMedia')->name('my-resumes.storeMedia');
     Route::post('my-resumes/ckmedia', 'MyResumeController@storeCKEditorImages')->name('my-resumes.storeCKEditorImages');
     Route::resource('my-resumes', 'MyResumeController');
 
+    // Request Resume
+    Route::delete('request-resumes/destroy', 'RequestResumeController@massDestroy')->name('request-resumes.massDestroy');
+    Route::resource('request-resumes', 'RequestResumeController');
+
     // My Skills
     Route::delete('my-skills/destroy', 'MySkillsController@massDestroy')->name('my-skills.massDestroy');
+    Route::post('my-skills/media', 'MySkillsController@storeMedia')->name('my-skills.storeMedia');
+    Route::post('my-skills/ckmedia', 'MySkillsController@storeCKEditorImages')->name('my-skills.storeCKEditorImages');
     Route::resource('my-skills', 'MySkillsController');
 
-    // User Alerts
-    Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
-    Route::get('user-alerts/read', 'UserAlertsController@read');
-    Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+    // Job Posting
+    Route::delete('job-postings/destroy', 'JobPostingController@massDestroy')->name('job-postings.massDestroy');
+    Route::post('job-postings/media', 'JobPostingController@storeMedia')->name('job-postings.storeMedia');
+    Route::post('job-postings/ckmedia', 'JobPostingController@storeCKEditorImages')->name('job-postings.storeCKEditorImages');
+    Route::resource('job-postings', 'JobPostingController');
+
+    // Job Skills
+    Route::delete('job-skills/destroy', 'JobSkillsController@massDestroy')->name('job-skills.massDestroy');
+    Route::resource('job-skills', 'JobSkillsController');
+
+    // Payments
+    Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
+    Route::resource('payments', 'PaymentsController');
+
+    // Credits
+    Route::delete('credits/destroy', 'CreditsController@massDestroy')->name('credits.massDestroy');
+    Route::resource('credits', 'CreditsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth', '2fa']], function () {
     // Change password
@@ -74,6 +94,10 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
+    // User Alerts
+    Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
+    Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+
     // Job Categories
     Route::delete('job-categories/destroy', 'JobCategoriesController@massDestroy')->name('job-categories.massDestroy');
     Route::resource('job-categories', 'JobCategoriesController');
@@ -82,23 +106,39 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::delete('skills/destroy', 'SkillsController@massDestroy')->name('skills.massDestroy');
     Route::resource('skills', 'SkillsController');
 
-    // Request Resume
-    Route::delete('request-resumes/destroy', 'RequestResumeController@massDestroy')->name('request-resumes.massDestroy');
-    Route::resource('request-resumes', 'RequestResumeController');
-
     // My Resume
     Route::delete('my-resumes/destroy', 'MyResumeController@massDestroy')->name('my-resumes.massDestroy');
     Route::post('my-resumes/media', 'MyResumeController@storeMedia')->name('my-resumes.storeMedia');
     Route::post('my-resumes/ckmedia', 'MyResumeController@storeCKEditorImages')->name('my-resumes.storeCKEditorImages');
     Route::resource('my-resumes', 'MyResumeController');
 
+    // Request Resume
+    Route::delete('request-resumes/destroy', 'RequestResumeController@massDestroy')->name('request-resumes.massDestroy');
+    Route::resource('request-resumes', 'RequestResumeController');
+
     // My Skills
     Route::delete('my-skills/destroy', 'MySkillsController@massDestroy')->name('my-skills.massDestroy');
+    Route::post('my-skills/media', 'MySkillsController@storeMedia')->name('my-skills.storeMedia');
+    Route::post('my-skills/ckmedia', 'MySkillsController@storeCKEditorImages')->name('my-skills.storeCKEditorImages');
     Route::resource('my-skills', 'MySkillsController');
 
-    // User Alerts
-    Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
-    Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+    // Job Posting
+    Route::delete('job-postings/destroy', 'JobPostingController@massDestroy')->name('job-postings.massDestroy');
+    Route::post('job-postings/media', 'JobPostingController@storeMedia')->name('job-postings.storeMedia');
+    Route::post('job-postings/ckmedia', 'JobPostingController@storeCKEditorImages')->name('job-postings.storeCKEditorImages');
+    Route::resource('job-postings', 'JobPostingController');
+
+    // Job Skills
+    Route::delete('job-skills/destroy', 'JobSkillsController@massDestroy')->name('job-skills.massDestroy');
+    Route::resource('job-skills', 'JobSkillsController');
+
+    // Payments
+    Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
+    Route::resource('payments', 'PaymentsController');
+
+    // Credits
+    Route::delete('credits/destroy', 'CreditsController@massDestroy')->name('credits.massDestroy');
+    Route::resource('credits', 'CreditsController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');

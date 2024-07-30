@@ -10,9 +10,9 @@ class CreateMySkillSkillPivotTable extends Migration
     {
         Schema::create('my_skill_skill', function (Blueprint $table) {
             $table->unsignedBigInteger('my_skill_id');
-            $table->foreign('my_skill_id', 'my_skill_id_fk_9983449')->references('id')->on('my_skills')->onDelete('cascade');
+            $table->foreign('my_skill_id', 'my_skill_id_fk_9983814')->references('id')->on('my_skills')->onDelete('cascade');
             $table->unsignedBigInteger('skill_id');
-            $table->foreign('skill_id', 'skill_id_fk_9983449')->references('id')->on('skills')->onDelete('cascade');
+            $table->foreign('skill_id', 'skill_id_fk_9983814')->references('id')->on('skills')->onDelete('cascade');
         });
     }
 }

@@ -14,6 +14,16 @@
                         @method('PUT')
                         @csrf
                         <div class="form-group">
+                            <label class="required" for="company">{{ trans('cruds.mySkill.fields.company') }}</label>
+                            <input class="form-control" type="text" name="company" id="company" value="{{ old('company', $mySkill->company) }}" required>
+                            @if($errors->has('company'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('company') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.mySkill.fields.company_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label class="required" for="job_title">{{ trans('cruds.mySkill.fields.job_title') }}</label>
                             <input class="form-control" type="text" name="job_title" id="job_title" value="{{ old('job_title', $mySkill->job_title) }}" required>
                             @if($errors->has('job_title'))
@@ -38,6 +48,39 @@
                             <span class="help-block">{{ trans('cruds.mySkill.fields.job_category_helper') }}</span>
                         </div>
                         <div class="form-group">
+                            <label for="start_date">{{ trans('cruds.mySkill.fields.start_date') }}</label>
+                            <input class="form-control date" type="text" name="start_date" id="start_date" value="{{ old('start_date', $mySkill->start_date) }}">
+                            @if($errors->has('start_date'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('start_date') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.mySkill.fields.start_date_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="end_date">{{ trans('cruds.mySkill.fields.end_date') }}</label>
+                            <input class="form-control" type="text" name="end_date" id="end_date" value="{{ old('end_date', $mySkill->end_date) }}">
+                            @if($errors->has('end_date'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('end_date') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.mySkill.fields.end_date_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input type="hidden" name="to_present" value="0">
+                                <input type="checkbox" name="to_present" id="to_present" value="1" {{ $mySkill->to_present || old('to_present', 0) === 1 ? 'checked' : '' }}>
+                                <label for="to_present">{{ trans('cruds.mySkill.fields.to_present') }}</label>
+                            </div>
+                            @if($errors->has('to_present'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('to_present') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.mySkill.fields.to_present_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label class="required" for="skills">{{ trans('cruds.mySkill.fields.skills') }}</label>
                             <div style="padding-bottom: 4px">
                                 <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -57,13 +100,27 @@
                         </div>
                         <div class="form-group">
                             <label for="comments">{{ trans('cruds.mySkill.fields.comments') }}</label>
-                            <input class="form-control" type="text" name="comments" id="comments" value="{{ old('comments', $mySkill->comments) }}">
+                            <textarea class="form-control ckeditor" name="comments" id="comments">{!! old('comments', $mySkill->comments) !!}</textarea>
                             @if($errors->has('comments'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('comments') }}
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.mySkill.fields.comments_helper') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="required" for="my_resume_id">{{ trans('cruds.mySkill.fields.my_resume') }}</label>
+                            <select class="form-control select2" name="my_resume_id" id="my_resume_id" required>
+                                @foreach($my_resumes as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('my_resume_id') ? old('my_resume_id') : $mySkill->my_resume->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('my_resume'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('my_resume') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.mySkill.fields.my_resume_helper') }}</span>
                         </div>
                         <div class="form-group">
                             <label class="required" for="user_id">{{ trans('cruds.mySkill.fields.user') }}</label>
@@ -91,4 +148,71 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function () {
+  function SimpleUploadAdapter(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
+      return {
+        upload: function() {
+          return loader.file
+            .then(function (file) {
+              return new Promise(function(resolve, reject) {
+                // Init request
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '{{ route('frontend.my-skills.storeCKEditorImages') }}', true);
+                xhr.setRequestHeader('x-csrf-token', window._token);
+                xhr.setRequestHeader('Accept', 'application/json');
+                xhr.responseType = 'json';
+
+                // Init listeners
+                var genericErrorText = `Couldn't upload file: ${ file.name }.`;
+                xhr.addEventListener('error', function() { reject(genericErrorText) });
+                xhr.addEventListener('abort', function() { reject() });
+                xhr.addEventListener('load', function() {
+                  var response = xhr.response;
+
+                  if (!response || xhr.status !== 201) {
+                    return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
+                  }
+
+                  $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
+
+                  resolve({ default: response.url });
+                });
+
+                if (xhr.upload) {
+                  xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                      loader.uploadTotal = e.total;
+                      loader.uploaded = e.loaded;
+                    }
+                  });
+                }
+
+                // Send request
+                var data = new FormData();
+                data.append('upload', file);
+                data.append('crud_id', '{{ $mySkill->id ?? 0 }}');
+                xhr.send(data);
+              });
+            })
+        }
+      };
+    }
+  }
+
+  var allEditors = document.querySelectorAll('.ckeditor');
+  for (var i = 0; i < allEditors.length; ++i) {
+    ClassicEditor.create(
+      allEditors[i], {
+        extraPlugins: [SimpleUploadAdapter]
+      }
+    );
+  }
+});
+</script>
+
 @endsection

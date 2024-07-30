@@ -22,10 +22,28 @@
 
                         </th>
                         <th>
+                            {{ trans('cruds.mySkill.fields.company') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.mySkill.fields.job_title') }}
                         </th>
                         <th>
                             {{ trans('cruds.mySkill.fields.job_category') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.start_date') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.end_date') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.to_present') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.skills') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.mySkill.fields.my_resume') }}
                         </th>
                         <th>
                             {{ trans('cruds.mySkill.fields.user') }}
@@ -42,10 +60,31 @@
 
                             </td>
                             <td>
+                                {{ $mySkill->company ?? '' }}
+                            </td>
+                            <td>
                                 {{ $mySkill->job_title ?? '' }}
                             </td>
                             <td>
                                 {{ $mySkill->job_category->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $mySkill->start_date ?? '' }}
+                            </td>
+                            <td>
+                                {{ $mySkill->end_date ?? '' }}
+                            </td>
+                            <td>
+                                <span style="display:none">{{ $mySkill->to_present ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $mySkill->to_present ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                @foreach($mySkill->skills as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $mySkill->my_resume->resume ?? '' }}
                             </td>
                             <td>
                                 {{ $mySkill->user->name ?? '' }}
@@ -118,7 +157,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 2, 'desc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-skillsMySkills:not(.ajaxTable)').DataTable({ buttons: dtButtons })

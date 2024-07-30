@@ -23,10 +23,28 @@
                             <thead>
                                 <tr>
                                     <th>
+                                        {{ trans('cruds.mySkill.fields.company') }}
+                                    </th>
+                                    <th>
                                         {{ trans('cruds.mySkill.fields.job_title') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.mySkill.fields.job_category') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.mySkill.fields.start_date') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.mySkill.fields.end_date') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.mySkill.fields.to_present') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.mySkill.fields.skills') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.mySkill.fields.my_resume') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.mySkill.fields.user') }}
@@ -40,10 +58,31 @@
                                 @foreach($mySkills as $key => $mySkill)
                                     <tr data-entry-id="{{ $mySkill->id }}">
                                         <td>
+                                            {{ $mySkill->company ?? '' }}
+                                        </td>
+                                        <td>
                                             {{ $mySkill->job_title ?? '' }}
                                         </td>
                                         <td>
                                             {{ $mySkill->job_category->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $mySkill->start_date ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $mySkill->end_date ?? '' }}
+                                        </td>
+                                        <td>
+                                            <span style="display:none">{{ $mySkill->to_present ?? '' }}</span>
+                                            <input type="checkbox" disabled="disabled" {{ $mySkill->to_present ? 'checked' : '' }}>
+                                        </td>
+                                        <td>
+                                            @foreach($mySkill->skills as $key => $item)
+                                                <span>{{ $item->name }}</span>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            {{ $mySkill->my_resume->resume ?? '' }}
                                         </td>
                                         <td>
                                             {{ $mySkill->user->name ?? '' }}
